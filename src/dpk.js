@@ -5,7 +5,7 @@ function createStringHash(string) {
 }
 
 /**
- * Returns the existing deterministic key of the event
+ * Returns the deterministic key of the event data
  *
  * @param {any} event
  * @returns  deterministic key of the provided event
