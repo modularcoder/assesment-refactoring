@@ -1,7 +1,11 @@
 const crypto = require('crypto')
 const { deterministicPartitionKey } = require('./dpk')
 
-// It creates a deterministic partition for the data input based on
+function createHash(string) {
+  return crypto.createHash('sha3-512').update(string).digest('hex')
+}
+
+// It creates a deterministic partitition key based on the input
 
 describe('deterministicPartitionKey', () => {
   it("Returns the literal '0' when given no input", () => {
@@ -15,15 +19,15 @@ describe('deterministicPartitionKey', () => {
     const event3 = true
 
     expect(deterministicPartitionKey(event1)).toBe(
-      crypto.createHash('sha3-512').update(JSON.stringify(event1)).digest('hex')
+      createHash(JSON.stringify(event1))
     )
 
     expect(deterministicPartitionKey(event2)).toBe(
-      crypto.createHash('sha3-512').update(JSON.stringify(event2)).digest('hex')
+      createHash(JSON.stringify(event2))
     )
 
     expect(deterministicPartitionKey(event3)).toBe(
-      crypto.createHash('sha3-512').update(JSON.stringify(event3)).digest('hex')
+      createHash(JSON.stringify(event3))
     )
   })
 
@@ -38,9 +42,7 @@ describe('deterministicPartitionKey', () => {
     const generatedKey = deterministicPartitionKey(event)
 
     expect(generatedKey).toHaveLength(128)
-    expect(generatedKey).toBe(
-      crypto.createHash('sha3-512').update(JSON.stringify(event)).digest('hex')
-    )
+    expect(generatedKey).toBe(createHash(JSON.stringify(event)))
   })
 
   it('Returns the existing partition key if the input already already has it', () => {
@@ -97,8 +99,6 @@ describe('deterministicPartitionKey', () => {
     const generatedKey = deterministicPartitionKey(event)
 
     expect(generatedKey).toHaveLength(128)
-    expect(generatedKey).toBe(
-      crypto.createHash('sha3-512').update(legacyKey).digest('hex')
-    )
+    expect(generatedKey).toBe(createHash(legacyKey))
   })
 })

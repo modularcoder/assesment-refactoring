@@ -11,11 +11,9 @@ You will be graded on the exhaustiveness and quality of your unit tests, the dep
 ## Your Explanation Here
 
 
-Initially I've analyzed the **deterministicPartitionKey** function to understand what it does.
-
-Then I've covered the **deterministicPartitionKey** function with the test cases including possible edge cases.
-
-After that I've renamed the `dpk.js` do `dpk-legacy.js` and created new `dpk.js` file intended for the refactored function, but created a wrapper function on top of the legacy implementation, ensuring that the new function still works.
+Initially I've analyzed the deterministicPartitionKey function to understand what it does.
+Then I've covered the deterministicPartitionKey function with the test cases including possible edge cases.
+After that I've renamed the dpk.js do dpk-legacy.js and created new dpk.js file intended for the refactored function, but created a wrapper function on top of the legacy implementation, ensuring that the new function still works.
 
 
 ```
@@ -26,11 +24,11 @@ deterministicPartitionKey(event) {
 
 Then I've refactored the function with the following improvements
 
-- Extracted hashing part to a separate function, making function **DRY**
-- Handled some edge conditions on top to reduce the code nesting (**no spagetti code**)
-- Better variable names to make core more **readable and explicit**
+- Extracted hashing part to a separate function, making function DRY
+- Handled some edge conditions on top to reduce the code nesting (no spagetti code)
+- Better variable names to make core more readable and explicit
 - Added code comments to describe the function
-- Ensured that **tests still pass**
+- Ensured that tests still pass
 
 
 Extra improvements:
