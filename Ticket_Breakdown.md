@@ -16,3 +16,45 @@ Based on the information given, break this ticket down into 2-5 individual ticke
 You will be graded on the level of detail in each ticket, the clarity of the execution plan within and between tickets, and the intelligibility of your language. You don't need to be a native English speaker, but please proof-read your work.
 
 ## Your Breakdown Here
+
+### User story:
+
+- As a Facility owner I would like to assing custom IDs to my Agents, which would be included in the shifts reports
+
+---
+
+This task assumes that there should be an extra custom agent ID data included in the `getShiftsByFacility` function, which needs to be provided by the Facility for each agent.
+
+Here are the list of questions that comes to my mind
+
+- How Facilities should provide Custom IDs to their Agents. For example let's assume we might have Agent settings page in the Facility profile, where Facilities might edit Agents information. => Meaning we need an extra input field in the application UI.
+
+- How to display the reports, if the custom IDs are not provided? Should we rollback the agentID to internal ID the reports used before?
+
+- Since reports are generated as PDFs, customers might need to regenerate their previous reports with newly provided custom Agent IDs
+
+---
+
+### Technical tasks by roles
+
+
+#### Backend
+
+- Task: Add new `customId` field into Agents table
+  - Database is migrated
+  - No braking changes are made
+- Task: Add ability to assign custom IDs to Facility agents
+  - API returns `customId` field in the agent metadata
+  - API updates the `customId` field value agents `create` and `update`
+- Task: Add custom agend IDs into PDFs for `generateReport`
+  - The PDFs contain custom IDS provided by facilities
+  - Reports with missing `customId` are generated as expected (rollback to internal id or keep empty)
+
+#### FrontEnd
+
+- Task: Implement the UI for adding custom IDs to Facility agents
+  - Implement to visual FE part where Facilities update the agentIds
+  - Implement update actions with mocked data (e.g. MSW)
+  - Connect to the real API
+  - Q&A
+
