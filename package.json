@@ -1,0 +1,17 @@
+{
+  "name": "starter-jest",
+  "version": "1.0.0",
+  "description": "",
+  "main": "src/index.js",
+  "scripts": {
+    "start": "node src/index.js",
+    "test": "jest"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@types/jest": "^29.5.1",
+    "jest": "^29.5.0",
+    "prettier": "2.8.8"
+  }
+}
