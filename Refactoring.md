@@ -29,3 +29,8 @@ Then I've refactored the function with the following improvements
 - Better variable names to make core more readable and explicit
 - Added code comments to describe the function
 - Ensured that tests still pass
+
+
+Extra improvements:
+
+- Added .editorconfig and prettier
